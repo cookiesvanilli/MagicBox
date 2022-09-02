@@ -27,8 +27,7 @@ public class MagicBox<T> {
                 }
             }
             int randomInt = random.nextInt(arrayObj.length); // джава подберёт случайное число от 0 до ЧИСЛО невключительно
-            System.out.println(arrayObj[randomInt]);
-            System.out.println("Work");
+            return arrayObj[randomInt];
 
         } catch (RuntimeException e) {
             int count = 0;
