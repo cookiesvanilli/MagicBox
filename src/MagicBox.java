@@ -20,24 +20,18 @@ public class MagicBox<T> {
     }
 
     public T pick() {
-        try {
-            for (int i = 0; i < arrayObj.length; i++) {
-                if (arrayObj[i] == null) {
-                    throw new RuntimeException();
-                }
-            }
-            int randomInt = random.nextInt(arrayObj.length); // джава подберёт случайное число от 0 до ЧИСЛО невключительно
-            return arrayObj[randomInt];
+        int count = 0;
+        for (int i = 0; i < arrayObj.length; i++) {
+            if (arrayObj[i] == null) {
+                count++;
 
-        } catch (RuntimeException e) {
-            int count = 0;
-            for (T a :
-                    arrayObj) {
-                if (a == null) count++;
             }
-            System.out.println("ERRR! The box is not full and there are still " + count + " cells left to fill.");
         }
-        return null;
+        if (count != 0) {
+            throw new RuntimeException("ERRR! The box is not full and there are still " + count + " cells left to fill.");
+        }
+        int randomInt = random.nextInt(arrayObj.length); // джава подберёт случайное число от 0 до ЧИСЛО невключительно
+        return arrayObj[randomInt];
     }
 
     @Override
